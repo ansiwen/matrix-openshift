@@ -3,6 +3,12 @@ FROM centos
 # Maintainer
 MAINTAINER Sven Anderson <sven@redhat.com>
 
+LABEL io.k8s.description="Synapse, the Matrix homeserver reference implementation" \
+      io.k8s.display-name="matrix-synapse" \
+      io.openshift.expose-services="8008:http,8448:https" \
+      io.openshift.tags="matrix,synapse,homeserver" \
+      io.openshift.wants="postgresql"
+
 # Git branch to build from
 ARG BV_SYN=master
 
