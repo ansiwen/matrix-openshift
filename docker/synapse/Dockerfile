@@ -32,6 +32,7 @@ RUN set -ex ;\
     pip install -U pip ;\
     pip install -U \
         setuptools \
+        psycopg2 \
     ;\
     git clone --branch $BV_SYN --depth 1 https://github.com/matrix-org/synapse.git /tmp/synapse ;\
     cd /tmp/synapse ;\
