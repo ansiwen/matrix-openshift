@@ -53,8 +53,15 @@ RUN set -ex ;\
     yum clean -y all ;\
     rm -rf /var/cache/yum/* /root/.cache/pip
 
+# install riot web client
+RUN set -ex ;\
+    LATEST=$(curl -s https://api.github.com/repos/vector-im/riot-web/releases/latest | grep browser_download_url | head -1 | cut -d '"' -f4) ;\
+    mkdir /riot ;\
+    curl -L $LATEST | tar zxf - --strip 1 -C /riot ;\
+    ln -s config/config.json /riot/config.json
+
 # startup configuration
 USER matrix
-VOLUME ["/data", "/config"]
+VOLUME ["/data", "/config", "/riot/config"]
 CMD ["/usr/bin/python", "-B", "-m", "synapse.app.homeserver", "-c", "/config/homeserver.yaml"]
 EXPOSE 8008 8448
