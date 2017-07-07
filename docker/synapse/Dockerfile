@@ -28,6 +28,7 @@ RUN set -ex ;\
         python-devel \
         libffi-devel \
         openssl-devel \
+        mailcap `# for /etc/mime.types` \
     ;\
     pip install -U pip ;\
     pip install -U \
