@@ -61,6 +61,11 @@ RUN set -ex ;\
     curl -L $LATEST | tar zxf - --strip 1 -C /riot ;\
     ln -s config/config.json /riot/config.json
 
+# set ownership for /data volume
+RUN set -ex ;\
+    mkdir /data ;\
+    chown matrix:matrix /data
+
 # startup configuration
 USER matrix
 VOLUME ["/data", "/config", "/riot/config"]
