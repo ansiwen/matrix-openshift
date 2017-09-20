@@ -10,7 +10,7 @@ LABEL io.k8s.description="Synapse, the Matrix homeserver reference implementatio
       io.openshift.wants="postgresql"
 
 # Git branch to build from
-ARG BV_SYN=master
+ARG BV_SYN=v0.22.1
 
 RUN set -ex ;\
     export LIBRARY_PATH=/lib:/usr/lib `# https://github.com/python-pillow/Pillow/issues/1763` ;\
